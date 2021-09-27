@@ -17,7 +17,6 @@ export function editPost(post: Post) {
         dispatch(fetchPosts);
       }
     } catch (error) {
-      console.log(error);
       dispatch({ type: SET_STATUS, payload: 'error' });
     }
   }

@@ -90,7 +90,7 @@ const PostCard = ({
   }
 
   return (
-    <Container>
+    <Container id="post-card">
       <TitleWrapper>
         <Title color="#ffffff">
           {title}

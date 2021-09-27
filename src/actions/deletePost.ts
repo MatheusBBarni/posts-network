@@ -13,7 +13,6 @@ export function deletePost(postId: number) {
         dispatch(fetchPosts);
       }
     } catch (error) {
-      console.log(error);
       dispatch({ type: SET_STATUS, payload: 'error' });
     }
   }

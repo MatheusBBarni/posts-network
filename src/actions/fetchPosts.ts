@@ -13,7 +13,6 @@ export async function fetchPosts(dispatch: AppDispatch) {
       dispatch({ type: SET_STATUS, payload: 'idle' });
     }
   } catch (error) {
-    console.log(error);
     dispatch({ type: SET_STATUS, payload: 'error' });
   }
 }

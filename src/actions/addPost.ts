@@ -11,13 +11,11 @@ export function addPost(post: CreatePost) {
       dispatch({ type: SET_STATUS, payload: 'loading' });
       const { data } = await api.post<Request<CreatePost>>('/careers/', post)
       if (data) {
-        console.log('data', data);
 
         dispatch({ type: SET_STATUS, payload: 'idle' });
         dispatch(fetchPosts);
       }
     } catch (error) {
-      console.log(error);
       dispatch({ type: SET_STATUS, payload: 'error' });
     }
   }
