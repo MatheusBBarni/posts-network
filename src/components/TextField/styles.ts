@@ -16,6 +16,7 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-flow: column;
+  margin-bottom: 20px;
 `;
 
 export const Label = styled.label`

@@ -20,6 +20,7 @@ export const GlobalCSS = createGlobalStyle`
   }
 
   input,
+  textarea,
   select {
     -webkit-box-sizing: border-box; 
     -moz-box-sizing: border-box;    

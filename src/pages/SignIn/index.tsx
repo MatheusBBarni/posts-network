@@ -1,14 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Button } from '../../components/Button';
+import Form from '../../components/Form';
 import TextField from '../../components/TextField';
-import Title from '../../components/Title';
 import { SET_USER } from '../../features/app/appActions';
 import { selectUser } from '../../features/app/appSlice';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
-import { Container, SignInFooter, SignInForm } from './styles';
+import { Container } from './styles';
 
 const SignIn: React.FC = () => {
   const history = useHistory();
@@ -24,9 +23,7 @@ const SignIn: React.FC = () => {
     }
   }, [user]);
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-
+  const handleSubmit = () => {
     dispatch({
       type: SET_USER,
       payload: username
@@ -36,8 +33,12 @@ const SignIn: React.FC = () => {
 
   return (
     <Container>
-      <SignInForm onSubmit={handleSubmit}>
-        <Title marginBottom="30px">Welcome to CodeLeap network!</Title>
+      <Form
+        buttonText="ENTER"
+        onSubmit={handleSubmit}
+        buttonDisabled={!username}
+        title="Welcome to CodeLeap network!"
+      >
         <TextField
           type="input"
           value={username}
@@ -45,12 +46,7 @@ const SignIn: React.FC = () => {
           label="Please enter your username"
           onChange={(value) => setUsername(value)}
         />
-        <SignInFooter>
-          <Button variant="normal" type="submit">
-            ENTER
-          </Button>
-        </SignInFooter>
-      </SignInForm>
+      </Form>
     </Container>
   );
 }

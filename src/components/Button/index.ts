@@ -35,5 +35,9 @@ export const Button = styled.button<ButtonProps>`
     :hover {
       transform: scale(1.01);
     }
+
+    :disabled {
+      opacity: 0.5;
+    }
   `}
 `;
