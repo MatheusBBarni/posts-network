@@ -40,7 +40,7 @@ const Main: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (!user) {
+    if (!user && history) {
       history.push('/sign-in')
     }
   }, [user])
