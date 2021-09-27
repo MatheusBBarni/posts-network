@@ -11,16 +11,7 @@ export interface AppState {
 
 const initialState: AppState = {
   user: '',
-  posts: [
-    // Adding a hardcoded post, because the API is giving me CORS error
-    {
-      "id": 716,
-      "username": "Concluido",
-      "created_datetime": "2021-08-17T22:21:41.170714Z",
-      "title": "ADDIDTEST",
-      "content": "rvived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s"
-    },
-  ],
+  posts: [],
   status: 'idle',
 };
 

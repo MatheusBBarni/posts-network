@@ -7,7 +7,7 @@ import { Request } from '../model/Request';
 export async function fetchPosts(dispatch: AppDispatch) {
   try {
     dispatch({ type: SET_STATUS, payload: 'loading' });
-    const { data } = await api.get<Request<Post[]>>('/careers')
+    const { data } = await api.get<Request<Post[]>>('/careers/')
     if (data) {
       dispatch({ type: SET_POSTS, payload: data.results });
       dispatch({ type: SET_STATUS, payload: 'idle' });

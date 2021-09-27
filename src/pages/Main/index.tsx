@@ -3,10 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Exit as ExitIcon } from '@styled-icons/icomoon/Exit'
 
-// import { fetchPosts } from '../../actions/fetchPosts';
+import { fetchPosts } from '../../actions/fetchPosts';
 import { selectPosts, selectUser } from '../../features/app/appSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { Container, Content, ContentWrapper, PostsWrapper, TitleWrapper, UserTip } from './styles';
+import {
+  Container,
+  Content,
+  ContentWrapper,
+  PostsWrapper,
+  TitleWrapper,
+  UserTip
+} from './styles';
 import { SET_USER } from '../../features/app/appActions';
 import Title from '../../components/Title';
 import Form from '../../components/Form';
@@ -28,9 +35,9 @@ const Main: React.FC = () => {
     username: user
   });
 
-  // useEffect(() => {
-  //   dispatch(fetchPosts)
-  // }, [])
+  useEffect(() => {
+    dispatch(fetchPosts)
+  }, [])
 
   useEffect(() => {
     if (!user) {
@@ -92,8 +99,8 @@ const Main: React.FC = () => {
             />
           </Form>
           <PostsWrapper>
-            {posts.map((post) => (
-              <PostCard key={post.id} post={post} />
+            {posts.map((post, index) => (
+              <PostCard key={`${post.id}-${index}`} post={post} />
             ))}
           </PostsWrapper>
         </Content>
