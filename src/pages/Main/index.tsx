@@ -10,7 +10,7 @@ import { Container, Content, ContentWrapper, PostsWrapper, TitleWrapper, UserTip
 import { SET_USER } from '../../features/app/appActions';
 import Title from '../../components/Title';
 import Form from '../../components/Form';
-import { CreatePost } from '../../model/Post';
+import { CreatePost, Post } from '../../model/Post';
 import TextField from '../../components/TextField';
 import { addPost } from '../../actions/addPost';
 import PostCard from '../../components/PostCard';
@@ -22,15 +22,15 @@ const Main: React.FC = () => {
   const user = useAppSelector(selectUser);
   const posts = useAppSelector(selectPosts);
 
-  const [post, setPost] = useState<CreatePost>({
+  const [post, setPost] = useState<CreatePost | Post>({
     title: '',
     content: '',
     username: user
   });
 
-  useEffect(() => {
-    // dispatch(fetchPosts)
-  }, [])
+  // useEffect(() => {
+  //   dispatch(fetchPosts)
+  // }, [])
 
   useEffect(() => {
     if (!user) {
@@ -38,21 +38,16 @@ const Main: React.FC = () => {
     }
   }, [user])
 
-  useEffect(() => {
-    console.log(posts);
-
-  }, [posts])
-
   const resetPost = () => {
     setPost({
       title: '',
       content: '',
       username: user
-    })
+    });
   }
 
   const handleSubmit = () => {
-    dispatch(addPost(post))
+    dispatch(addPost(post));
     resetPost();
   }
 
@@ -73,8 +68,8 @@ const Main: React.FC = () => {
             <TextField
               type="input"
               value={post.title}
-              placeHolder="Post title"
               label="Title"
+              placeHolder="Post title"
               onChange={(value) => {
                 setPost({
                   ...post,
@@ -86,8 +81,8 @@ const Main: React.FC = () => {
               type="textarea"
               rows={3}
               value={post.content}
-              placeHolder="Post content"
               label="Content"
+              placeHolder="Post content"
               onChange={(value) => {
                 setPost({
                   ...post,

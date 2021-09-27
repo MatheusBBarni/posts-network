@@ -43,10 +43,33 @@ export const appSlice = createSlice({
         payload
       ]
     },
+    deletePost: (state, action) => {
+      const { payload } = action;
+
+      let posts = [...state.posts];
+      const index = posts.findIndex((post) => post.id === payload);
+      posts.splice(index, 1);
+
+      state.posts = [
+        ...posts
+      ];
+    },
+    editPost: (state, action) => {
+      const { payload } = action;
+
+      let posts = [...state.posts];
+      let index = posts.findIndex((post) => post.id === payload.id);
+
+      posts[index] = payload;
+
+      state.posts = [
+        ...posts
+      ];
+    },
     setStatus: (state, action) => {
       const { payload } = action;
       state.status = payload
-    },
+    }
   },
 });
 

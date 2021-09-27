@@ -18,7 +18,7 @@ export function addPost(post: CreatePost) {
     });
     try {
       dispatch({ type: SET_STATUS, payload: 'loading' });
-      const { data } = await api.post<Request<CreatePost>>('/careers')
+      const { data } = await api.post<Request<CreatePost>>('/careers', post)
       if (data) {
         dispatch({ type: SET_STATUS, payload: 'idle' });
         dispatch({ type: ADD_POST, payload: post });

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
@@ -55,5 +55,32 @@ export const ContentHeader = styled.div`
   }
   span {
     font-weight: 400;
+  }
+`;
+
+export const ModalHeader = styled.div`
+  width: 100%;
+`;
+
+export const ModalFooter = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  button {
+    :first-child {
+      margin-right: 15px;
+    }
+  }
+`;
+
+export const ModalContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  
+  ${ModalFooter} {
+    margin-top: 50px;
   }
 `;
